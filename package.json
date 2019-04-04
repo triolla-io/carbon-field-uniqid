@@ -1,5 +1,5 @@
 {
-  "name": "carbon-field-number",
+  "name": "carbon-field-uniqid",
   "version": "3.0.0",
   "scripts": {
     "start": "npm run development -- --watch",

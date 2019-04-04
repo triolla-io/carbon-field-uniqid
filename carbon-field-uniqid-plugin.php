@@ -9,7 +9,7 @@
  * License: GPL2
  * Requires at least: 4.0
  * Tested up to: 5.0.2
- * Text Domain: carbon-field-number
+ * Text Domain: carbon-field-uniqid
  * Domain Path: /languages
  */
 
