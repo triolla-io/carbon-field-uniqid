@@ -16,6 +16,15 @@ class UniqIDField extends Component {
     onChange(id, e.target.value);
   };
 
+  randomHash() {
+    return (
+      Date.now().toString() +
+      Math.random()
+        .toString(36)
+        .substr(2, 5)
+    );
+  }
+
   /**
    * Render a number input field.
    *
@@ -30,7 +39,7 @@ class UniqIDField extends Component {
         type="hidden"
         id={id}
         name={name}
-        value={field.value.length ? field.value : randomHash()}
+        value={field.value.length ? field.value : this.randomHash()}
         className="cf-uniqid__input"
         onChange={this.handleChange}
       />
