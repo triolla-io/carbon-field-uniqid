@@ -69,30 +69,7 @@ class UniqID_Field extends Field
     public function set_value_from_input($input)
     {
         parent::set_value_from_input($input);
-
         $value = $this->get_value();
-        if ('' === $value) {
-            return;
-        }
-
-        $value = floatval($value);
-
-        if (null !== $this->min) {
-            $value = max($value, $this->min);
-        }
-
-        if (null !== $this->max) {
-            $value = min($value, $this->max);
-        }
-
-        if (null !== $this->step) {
-            $step_base = (null !== $this->min) ? $this->min : 0;
-            $is_valid_step_value = 0 === ($value - $step_base) % $this->step;
-            if (!$is_valid_step_value) {
-                $value = $step_base; // value is not valid - reset it to a base value
-            }
-        }
-
         $this->set_value($value);
     }
 
@@ -108,51 +85,6 @@ class UniqID_Field extends Field
         $field_data = parent::to_json($load);
 
         return array_merge($field_data, [
-            'min' => $this->min,
-            'max' => $this->max,
-            'step' => $this->step,
         ]);
-    }
-
-    /**
-     * Set field minimum value. Default: null.
-     *
-     * @param null|float $min
-     *
-     * @return self $this
-     */
-    public function set_min($min)
-    {
-        $this->min = floatval($min);
-
-        return $this;
-    }
-
-    /**
-     * Set field maximum value. Default: null.
-     *
-     * @param null|float $max
-     *
-     * @return self $this
-     */
-    public function set_max($max)
-    {
-        $this->max = floatval($max);
-
-        return $this;
-    }
-
-    /**
-     * Set field step value. Default: null.
-     *
-     * @param null|float $step
-     *
-     * @return self $this
-     */
-    public function set_step($step)
-    {
-        $this->step = floatval($step);
-
-        return $this;
     }
 }

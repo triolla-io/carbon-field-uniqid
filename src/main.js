@@ -27,14 +27,11 @@ class UniqIDField extends Component {
 
     return (
       <input
-        type="number"
+        type="hidden"
         id={id}
         name={name}
-        value={value}
-        max={field.max}
-        min={field.min}
-        step={field.step}
-        className="cf-number__input"
+        value={field.value.length ? field.value : randomHash()}
+        className="cf-uniqid__input"
         onChange={this.handleChange}
       />
     );
